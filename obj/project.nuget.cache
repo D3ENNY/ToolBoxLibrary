@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "HjyfzsChx6ygXNGZ9Lk9QKXClgzDZ4I+KB+TpvXDyRD6TQRl/tU8cHW1cX1jv1XxpfrDpESzf+3qH/xMgmsfAw==",
+  "success": true,
+  "projectFilePath": "/home/denny/Betacom Academy/betacom-academy/ToolBoxLibrary/ToolBoxLibrary.csproj",
+  "expectedPackageFiles": [
+    "/home/denny/.nuget/packages/microsoft.aspnetcore.app.ref/7.0.12/microsoft.aspnetcore.app.ref.7.0.12.nupkg.sha512"
+  ],
+  "logs": []
+}
