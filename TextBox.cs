@@ -2,7 +2,7 @@ using ToolBoxLibrary.InternalFunc;
 
 namespace ToolBoxLibrary.TextBox;
 
-public static class StringBox
+public static class TypeBox
 {
     /// <summary>
     /// Capitalizza la prima lettera di una stringa e restituisce il risultato.
@@ -19,4 +19,5 @@ public static class StringBox
             : str == ""
             ? ErrorManager.PrintException("la stringa in input è vuota", new ArgumentException(nameof(str) + " can not be white"))
             : string.Concat(str[0].ToString().ToUpper(), str.AsSpan(1));
+            
 }
