@@ -10,3 +10,15 @@
 /home/denny/Betacom Academy/betacom-academy/ToolBoxLibrary/obj/Debug/net7.0/refint/ToolBoxLibrary.dll
 /home/denny/Betacom Academy/betacom-academy/ToolBoxLibrary/obj/Debug/net7.0/ToolBoxLibrary.pdb
 /home/denny/Betacom Academy/betacom-academy/ToolBoxLibrary/obj/Debug/net7.0/ref/ToolBoxLibrary.dll
+/home/denny/projects/C#/ToolBoxLibrary/bin/Debug/net7.0/ToolBoxLibrary.deps.json
+/home/denny/projects/C#/ToolBoxLibrary/bin/Debug/net7.0/ToolBoxLibrary.dll
+/home/denny/projects/C#/ToolBoxLibrary/bin/Debug/net7.0/ToolBoxLibrary.pdb
+/home/denny/projects/C#/ToolBoxLibrary/obj/Debug/net7.0/ToolBoxLibrary.csproj.AssemblyReference.cache
+/home/denny/projects/C#/ToolBoxLibrary/obj/Debug/net7.0/ToolBoxLibrary.GeneratedMSBuildEditorConfig.editorconfig
+/home/denny/projects/C#/ToolBoxLibrary/obj/Debug/net7.0/ToolBoxLibrary.AssemblyInfoInputs.cache
+/home/denny/projects/C#/ToolBoxLibrary/obj/Debug/net7.0/ToolBoxLibrary.AssemblyInfo.cs
+/home/denny/projects/C#/ToolBoxLibrary/obj/Debug/net7.0/ToolBoxLibrary.csproj.CoreCompileInputs.cache
+/home/denny/projects/C#/ToolBoxLibrary/obj/Debug/net7.0/ToolBoxLibrary.dll
+/home/denny/projects/C#/ToolBoxLibrary/obj/Debug/net7.0/refint/ToolBoxLibrary.dll
+/home/denny/projects/C#/ToolBoxLibrary/obj/Debug/net7.0/ToolBoxLibrary.pdb
+/home/denny/projects/C#/ToolBoxLibrary/obj/Debug/net7.0/ref/ToolBoxLibrary.dll

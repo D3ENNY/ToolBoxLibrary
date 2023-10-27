@@ -102,8 +102,9 @@ public class FileBox
                 .Where(p => p.CanRead)
                 .ToList();
                 getters.ForEach(x => {
-                    XElement childEl = new XElement(x.Name);
-                    childEl.Value = x.GetValue(element)?.ToString() ?? string.Empty;
+                    XElement childEl = new(x.Name){
+                        Value = x.GetValue(element)?.ToString() ?? string.Empty
+                    };
                     el.Add(childEl);
                 });
                 xmlDoc.Root.Add(el);
@@ -122,5 +123,36 @@ public class FileBox
         {
             ErrorManager.PrintException("Errore generico durante l'operazione di append XML.", ex);
         }
+    }
+
+    public List<T> ReadTxt<T>(string separator, string path) where T : new()
+    {
+        List<T> objList = new List<T>();
+
+        try
+        {
+            string sline;
+            using (StreamReader sr = new StreamReader(path))
+            {
+                while ((sline = sr.ReadLine()!) != null)
+                {
+                    string[] parts = sline.Split(separator);
+                    T obj = new();
+
+                    PropertyInfo[] properties = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+
+                    for (int i = 0; i < parts.Length; i++)
+                        properties[i].SetValue(obj, Convert.ChangeType(parts[i], properties[i].PropertyType), null);
+                    
+                    objList.Add(obj);
+                }
+            }
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+
+        return objList;
     }
 }

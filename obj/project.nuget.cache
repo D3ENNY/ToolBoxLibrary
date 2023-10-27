@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "HjyfzsChx6ygXNGZ9Lk9QKXClgzDZ4I+KB+TpvXDyRD6TQRl/tU8cHW1cX1jv1XxpfrDpESzf+3qH/xMgmsfAw==",
+  "dgSpecHash": "qKX7i+ES/ZNEGHEJBpzh8aRWC6Mh2k047UY0XbbTJfnsrMf0Qssa79lCDKAANQofGhx3Es7XlIQzdJP29y16Zw==",
   "success": true,
-  "projectFilePath": "/home/denny/Betacom Academy/betacom-academy/ToolBoxLibrary/ToolBoxLibrary.csproj",
+  "projectFilePath": "/home/denny/projects/C#/ToolBoxLibrary/ToolBoxLibrary.csproj",
   "expectedPackageFiles": [
     "/home/denny/.nuget/packages/microsoft.aspnetcore.app.ref/7.0.12/microsoft.aspnetcore.app.ref.7.0.12.nupkg.sha512"
   ],

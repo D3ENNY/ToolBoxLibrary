@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/denny/Betacom Academy/betacom-academy/ToolBoxLibrary/ToolBoxLibrary.csproj",
+      "projectUniqueName": "/home/denny/projects/C#/ToolBoxLibrary/ToolBoxLibrary.csproj",
       "projectName": "ToolBoxLibrary",
-      "projectPath": "/home/denny/Betacom Academy/betacom-academy/ToolBoxLibrary/ToolBoxLibrary.csproj",
+      "projectPath": "/home/denny/projects/C#/ToolBoxLibrary/ToolBoxLibrary.csproj",
       "packagesPath": "/home/denny/.nuget/packages/",
-      "outputPath": "/home/denny/Betacom Academy/betacom-academy/ToolBoxLibrary/obj/",
+      "outputPath": "/home/denny/projects/C#/ToolBoxLibrary/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/denny/.nuget/NuGet/NuGet.Config"
