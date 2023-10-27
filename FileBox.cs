@@ -123,4 +123,43 @@ public class FileBox
             ErrorManager.PrintException("Errore generico durante l'operazione di append XML.", ex);
         }
     }
+
+    public List<T> ReadTxt<T>(string separator, string path) where T : new()
+    {
+        List<T> objList = new List<T>();
+
+        try
+        {
+            string sline;
+            using (StreamReader sr = new StreamReader(path))
+            {
+                while ((sline = sr.ReadLine()!) != null)
+                {
+                    string[] parts = sline.Split(separator);
+                    T obj = new();
+
+                    PropertyInfo[] properties = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+
+                    for (int i = 0; i < parts.Length; i++)
+                        properties[i].SetValue(obj, Convert.ChangeType(parts[i], properties[i].PropertyType), null);
+                    
+                    objList.Add(obj);
+                }
+            }
+        }
+        catch (FileNotFoundException ex)
+        {
+            ErrorManager.PrintException("Errore: Il file specificato non è stato trovato.", ex);
+        }
+        catch (FormatException ex)
+        {
+            ErrorManager.PrintException("Errore: Il formato di alcuni argomenti è errato.", ex);
+        }
+        catch (Exception ex)
+        {
+            ErrorManager.PrintException("Errore generico durante l'operazione di append XML.", ex);
+        }
+
+        return objList;
+    }
 }
