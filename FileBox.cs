@@ -136,14 +136,14 @@ public class FileBox
                 while ((sline = sr.ReadLine()!) != null)
                 {
                     string[] parts = sline.Split(separator);
+                    PropertyInfo[] properties = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
                     T obj = new();
 
-                    PropertyInfo[] properties = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
-
-                    for (int i = 0; i < parts.Length; i++)
-                        properties[i].SetValue(obj, Convert.ChangeType(parts[i], properties[i].PropertyType), null);
-                    
-                    objList.Add(obj);
+                    if(properties.Length == parts.Length){
+                        for (int i = 0; i < properties.Length; i++)
+                            properties[i].SetValue(obj, Convert.ChangeType(parts[i], properties[i].PropertyType), null);
+                        objList.Add(obj);
+                    }
                 }
             }
         }
