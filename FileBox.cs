@@ -131,19 +131,19 @@ public class FileBox
         try
         {
             string sline;
-            using (StreamReader sr = new StreamReader(path))
+            using StreamReader sr = new(path);
+            while ((sline = sr.ReadLine()!) != null)
             {
-                while ((sline = sr.ReadLine()!) != null)
-                {
-                    string[] parts = sline.Split(separator);
-                    PropertyInfo[] properties = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
-                    T obj = new();
+                string[] parts = sline.Split(separator);
+                PropertyInfo[] properties = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+                T obj = new();
 
-                    if(properties.Length == parts.Length){
-                        for (int i = 0; i < properties.Length; i++)
-                            properties[i].SetValue(obj, Convert.ChangeType(parts[i], properties[i].PropertyType), null);
-                        objList.Add(obj);
-                    }
+
+                if (properties.Length == parts.Length)
+                {
+                    for (int i = 0; i < properties.Length; i++)
+                        properties[i].SetValue(obj, Convert.ChangeType(parts[i], properties[i].PropertyType), null);
+                    objList.Add(obj);
                 }
             }
         }
@@ -159,7 +159,6 @@ public class FileBox
         {
             ErrorManager.PrintException("Errore generico durante l'operazione di append XML.", ex);
         }
-
         return objList;
     }
 }
