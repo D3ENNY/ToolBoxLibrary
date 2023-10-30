@@ -136,11 +136,10 @@ public class FileBox
             {
                 string[] parts = sline.Split(separator);
                 PropertyInfo[] properties = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
-                T obj = new();
-
 
                 if (properties.Length == parts.Length)
                 {
+                    T obj = new();
                     for (int i = 0; i < properties.Length; i++)
                         properties[i].SetValue(obj, Convert.ChangeType(parts[i], properties[i].PropertyType), null);
                     objList.Add(obj);
