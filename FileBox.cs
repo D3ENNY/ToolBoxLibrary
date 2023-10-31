@@ -123,7 +123,19 @@ public class FileBox
             ErrorManager.PrintException("Errore generico durante l'operazione di append XML.", ex);
         }
     }
-
+    
+    /// <summary>
+    /// leggi i dati di un file txt e li salva in una lista di oggetti
+    /// </summary>
+    /// <typeparam name="T">Il tipo dell'elemento da serializzare e aggiungere.</typeparam>
+    /// <param name="separator">il separatore che separa i vari campi nel file txt</param>
+    /// <param name="path">Il percorso del documento XML esistente in cui aggiungere l'elemento.</param>
+    /// <exception cref="FileNotFoundException">tato passato in input un path di un file non trovato<</exception>
+    /// <exception cref="FormatException">il formato di alcuni argomenti è errato</exception>
+    /// <exception cref="Exception">si è verificato un errore generico</exception>
+    /// <return>
+    ///     una lista di oggetti del tipo specificato in input che contiene gli elementi presenti all'interno del file txt
+    /// </return>
     public List<T> ReadTxt<T>(string separator, string path) where T : new()
     {
         List<T> objList = new List<T>();
