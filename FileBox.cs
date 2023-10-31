@@ -2,6 +2,7 @@
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
+using Newtonsoft.Json;
 
 using ToolBoxLibrary.InternalFunc;
 
@@ -173,5 +174,21 @@ public class FileBox
         return objList;
     }
 
-    
+    public void writeJson<T>(List<T> list, string path) where T : List<T>
+    {
+        try
+        {
+            object json = JsonConvert.SerializeObject(list, Newtonsoft.Json.Formatting.Indented);
+            using(StreamWriter sw = new(path)){
+                sw.WriteLine(json);
+            }
+            
+        }
+        catch (System.Exception)
+        {
+            
+            throw;
+        }
+    }
+
 }
