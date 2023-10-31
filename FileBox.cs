@@ -184,10 +184,17 @@ public class FileBox
             }
             
         }
-        catch (System.Exception ex)
+        catch (InvalidOperationException ex)
         {
-            
-            throw;
+            ErrorManager.PrintException("Errore durante la serializzazione.", ex);
+        }
+        catch (IOException ex)
+        {
+            ErrorManager.PrintException("Errore di I/O durante la serializzazione.", ex);
+        }
+        catch (Exception ex)
+        {
+            ErrorManager.PrintException("Errore generico durante la serializzazione.", ex);
         }
     }
 
