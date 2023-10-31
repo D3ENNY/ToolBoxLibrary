@@ -123,7 +123,7 @@ public class FileBox
             ErrorManager.PrintException("Errore generico durante l'operazione di append XML.", ex);
         }
     }
-    
+
     /// <summary>
     /// leggi i dati di un file txt e li salva in una lista di oggetti
     /// </summary>
@@ -172,4 +172,6 @@ public class FileBox
         }
         return objList;
     }
+
+    
 }
