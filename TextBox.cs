@@ -20,4 +20,14 @@ public static class StringBox
             ? ErrorManager.PrintException("la stringa in input è vuota", new ArgumentException(nameof(str) + " can not be white"))
             : string.Concat(str[0].ToString().ToUpper(), str.AsSpan(1));
 
+    public static bool EqualsIgnoreCase(string str, string value)
+    {
+        if(str == null)
+            return false;
+        
+        if(str.ToLower().Equals(value.ToLower()))
+            return true;
+        return false;
+    }
+
 }
