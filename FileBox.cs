@@ -131,7 +131,7 @@ public class FileBox
     /// </summary>
     /// <typeparam name="T">Il tipo dell'elemento da serializzare e aggiungere.</typeparam>
     /// <param name="separator">il separatore che separa i vari campi nel file txt</param>
-    /// <param name="path">Il percorso del documento XML esistente in cui aggiungere l'elemento.</param>
+    /// <param name="path">Il percorso del documento txt esistente in cui aggiungere l'elemento.</param>
     /// <exception cref="FileNotFoundException">tato passato in input un path di un file non trovato<</exception>
     /// <exception cref="FormatException">il formato di alcuni argomenti è errato</exception>
     /// <exception cref="Exception">si è verificato un errore generico</exception>
@@ -174,6 +174,16 @@ public class FileBox
         return objList;
     }
 
+    /// <summary>
+    /// serializza su file json una lista di oggetti del tipo specificato in input
+    /// </summary>
+    /// <typeparam name="T">Il tipo dell'elemento da serializzare e aggiungere.</typeparam>
+    /// <param name="list">la lista di oggetti da serializzare</param>
+    /// <param name="path">Il percorso del documento JSON esistente in cui aggiungere l'elemento.</param>
+    /// <exception cref="InvalidOperationException">errore durante la serializzazione di un oggetto</exception>
+    /// <exception cref="IOException">errore di I/O durante la serualizzazione</exception>
+    /// <exception cref="Exception">si è verificato un errore generico</exception>
+    /// <return> void </return>
     public void WriteJson<T>(List<T> list, string path)
     {
         try
@@ -198,6 +208,13 @@ public class FileBox
         }
     }
 
+    /// <summary>
+    /// ritorna tutti i customAttribute di una classe
+    /// </summary>
+    /// <typeparam name="T">Il tipo dell'elemento sulla quale eseguire la reflection.</typeparam>
+    /// <return>
+    /// ritorna un array di ProprertyInfo
+    /// </return>
     private PropertyInfo[] GetCustomAttributes<T>() => typeof(T)
                 .GetProperties(BindingFlags.Public | BindingFlags.Instance)
                 .Where(property => property.GetCustomAttribute<TXTReaderAttribute>() != null)
