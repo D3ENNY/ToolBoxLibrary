@@ -5,7 +5,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
+    <!-- dotnet add package Newtonsoft.Json --> 
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <!-- dotnet add package System.Data.SqlClient --> 
     <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
   </ItemGroup>
 </Project>

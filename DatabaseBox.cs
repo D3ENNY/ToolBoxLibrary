@@ -6,7 +6,7 @@ namespace ToolBoxLibrary
 {
     public class DatabaseBox
     {
-        private SqlConnection conn;
+        private readonly SqlConnection? conn;
         private bool IsDbValid = false;
         public DatabaseBox(string conStr)
         {
@@ -18,7 +18,6 @@ namespace ToolBoxLibrary
             {
                 ErrorManager.PrintException("ERRORE GENERICO DI CONNESSIONE AL DB\n", e);
             }
-
         }
 
         public List<Dictionary<string,string>> Query(string query)
@@ -40,7 +39,7 @@ namespace ToolBoxLibrary
                         {
                             Dictionary<string, string> record = new();               
                             for(int i=0; i<result.FieldCount; i++)
-                                record.Add(dataTable.Rows[i]["ColumName"].ToString(), result[i].ToString());
+                                record.Add(dataTable.Rows[i]["ColumName"].ToString() ?? "default key", result[i].ToString() ?? "default value")
 
                             returnList.Add(record);
                         }
