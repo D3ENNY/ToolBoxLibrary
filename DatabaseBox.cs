@@ -2,11 +2,11 @@
 using System.Data.SqlClient;
 using ToolBoxLibrary.InternalFunc;
 
-namespace ToolBoxLibrary
+namespace ToolBoxLibrary.DatabaseBox
 {
     public class DatabaseBox
     {
-        private readonly SqlConnection? conn;
+        private readonly SqlConnection conn;
         private bool IsDbValid = false;
         public DatabaseBox(string conStr)
         {
@@ -20,7 +20,7 @@ namespace ToolBoxLibrary
             }
         }
 
-        public List<Dictionary<string,string>> Query(string query)
+        public List<Dictionary<string, string>> Query(string query, Dictionary<string, string>? param = null)
         {
             List<Dictionary<string,string>> returnList = new();
             try
@@ -30,21 +30,33 @@ namespace ToolBoxLibrary
                 {
                     using SqlCommand stmt = new(query, this.conn); ;
 
-                    SqlDataReader result = stmt.ExecuteReader();
+                    if(param != null)
+                    {
+                        foreach (KeyValuePair<string,string> item in param)
+                        {
+                            stmt.Parameters.Add(new()
+                            {
+                                Value = item.Value,
+                                ParameterName = item.Key
+                            });
+                        }
+                    }
+
+                    using SqlDataReader result = stmt.ExecuteReader();
 
                     if(result.HasRows)
                     {
-                        DataTable dataTable = result.GetSchemaTable();
                         while (result.Read())
                         {
-                            Dictionary<string, string> record = new();               
-                            for(int i=0; i<result.FieldCount; i++)
-                                record.Add(dataTable.Rows[i]["ColumName"].ToString() ?? "default key", result[i].ToString() ?? "default value")
+                            Dictionary<string, string> record = new();
+                            for (int i = 0; i < result.FieldCount; i++)
+                                record.Add(result.GetName(i).ToString() ?? "default key", result[i].ToString() ?? "default value");
 
                             returnList.Add(record);
                         }
                     }
                 }
+                this.conn.Close();
             }
             catch (Exception e)
             {
