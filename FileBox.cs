@@ -149,7 +149,7 @@ public class FileBox
             while ((sline = sr.ReadLine()!) != null)
             {
                 string[] parts = sline.Split(separator);
-                PropertyInfo[] properties =  GetCustomAttributes<T>();
+                PropertyInfo[] properties = GetCustomAttributes<T>();
                 if (properties.Length == parts.Length)
                 {
                     T obj = new();
