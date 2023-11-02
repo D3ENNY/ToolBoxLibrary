@@ -5,6 +5,7 @@ using System.Xml.Serialization;
 using Newtonsoft.Json;
 
 using ToolBoxLibrary.InternalFunc;
+using ToolBoxLibrary.Attr;
 
 namespace ToolBoxLibrary.FileBox;
 public class FileBox
@@ -148,8 +149,7 @@ public class FileBox
             while ((sline = sr.ReadLine()!) != null)
             {
                 string[] parts = sline.Split(separator);
-                PropertyInfo[] properties = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
-
+                PropertyInfo[] properties =  GetCustomAttributes<T>();
                 if (properties.Length == parts.Length)
                 {
                     T obj = new();
@@ -197,5 +197,10 @@ public class FileBox
             ErrorManager.PrintException("Errore generico durante la serializzazione.", ex);
         }
     }
+
+    private PropertyInfo[] GetCustomAttributes<T>() => typeof(T)
+                .GetProperties(BindingFlags.Public | BindingFlags.Instance)
+                .Where(property => property.GetCustomAttribute<TXTReaderAttribute>() != null)
+                .ToArray();
 
 }
