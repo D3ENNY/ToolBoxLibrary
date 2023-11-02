@@ -174,7 +174,7 @@ public class FileBox
         return objList;
     }
 
-    public void writeJson<T>(List<T> list, string path)
+    public void WriteJson<T>(List<T> list, string path)
     {
         try
         {
