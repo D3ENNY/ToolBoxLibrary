@@ -14,9 +14,20 @@ namespace ToolBoxLibrary.DatabaseBox
             {
                 this.conn = new(conStr);
             }
-            catch(Exception e)
+            catch(Exception ex)
             {
-                ErrorManager.PrintException("ERRORE GENERICO DI CONNESSIONE AL DB\n", e);
+                ErrorManager.PrintException("ERRORE GENERICO DI CONNESSIONE AL DB\n", ex);
+            }
+        }
+        public DatabaseBox(string source, string DbName, bool security) 
+        {
+            try
+            {
+                this.conn = new(GetConnectionString(source, DbName, security));
+            }
+            catch (Exception ex)
+            {
+                ErrorManager.PrintException("ERRORE GENERICO DI CONNESSIONE AL DB\n", ex);
             }
         }
 
@@ -64,6 +75,8 @@ namespace ToolBoxLibrary.DatabaseBox
             }
             return returnList;
         }
+
+        private string GetConnectionString(string Source, string DbName, bool Security) => $@"Data Source={Source};Initial Catalog={DbName};Integrated Security={Security};";
 
         private void CheckDB()
         {
